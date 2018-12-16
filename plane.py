@@ -7,11 +7,11 @@ pygame.init()
 screen = pygame.display.set_mode((600, 800), 0, 32)
 player = "古力"
 pygame.display.set_caption("Hello,Lawrence")
-background = pygame.image.load('background.png').convert()
+background = pygame.image.load('static/planepic/background.png').convert()
 font = pygame.font.SysFont('microsoftyahei', 32)
 
-lawrence_start = pygame.image.load('lawrence_start.jpg').convert()
-lawrence_end = pygame.image.load('lawrence_end.jpg').convert()
+lawrence_start = pygame.image.load('static/planepic/lawrence_start.jpg').convert()
+lawrence_end = pygame.image.load('static/planepic/lawrence_end.jpg').convert()
 
 class Plane:
     def restart(self):
@@ -20,7 +20,7 @@ class Plane:
 
     def __init__(self):
         self.restart()
-        self.image = pygame.image.load('plane.png').convert_alpha()
+        self.image = pygame.image.load('static/planepic/plane.png').convert_alpha()
 
     def move(self):
         x, y = pygame.mouse.get_pos()
@@ -33,7 +33,7 @@ class Bullet:
     def __init__(self):
         self.x = 0
         self.y = -1
-        self.image = pygame.image.load('bullet.png').convert_alpha()
+        self.image = pygame.image.load('static/planepic/bullet.png').convert_alpha()
         self.active = False
 
     def move(self):
@@ -56,7 +56,7 @@ class Enemy:
 
     def __init__(self):
         self.restart()
-        self.image = pygame.image.load("enemy.png").convert_alpha()
+        self.image = pygame.image.load("static/planepic/enemy.png").convert_alpha()
 
     def move(self):
         if self.y < 1000:
