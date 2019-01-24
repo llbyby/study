@@ -8,7 +8,10 @@ from xlutils.copy import copy
 import xlwt
 import sys
 import time
+import uuid
 
+operator = '彭总'
+macaddress = '00:09:0f:fe:00:01'
 touser = ''
 agentid = 1000004
 corpid = 'ww7d0cf0db2960ee82'
@@ -21,6 +24,11 @@ logging.basicConfig(level=logging.DEBUG, filename='salarynotify.log',
 
 # 工资记录文件地址
 path = r'salarynotify.xls'
+
+#获取本地MAC地址
+def get_mac_address():
+    mac=uuid.UUID(int = uuid.getnode()).hex[-12:]
+    return ":".join([mac[e:e+2] for e in range(0,11,2)])
 
 def ModifyContent(row,col,content,sheet,new_remindbook,path,style):
     # 获取工作表内容
@@ -57,6 +65,20 @@ class WorkWx:
         return self.send_message(url, bytes(json.dumps(values), 'utf-8'))
 
 if __name__ == '__main__':
+    #MAC地址校验
+    mymac = get_mac_address()
+    if mymac != macaddress:
+        print('本软件仅供%s使用' % operator)
+        input('按任意键退出...')
+        sys.exit(0)
+    #密码校验
+    password = input('请输入密码：')
+    if password != '2803prinT':
+        print('密码错误！')
+        input('按任意键退出...')
+        sys.exit(0)
+    #问候语
+    print('%s您好，现在开始发送，请不要关闭窗口' % operator)
     # 文件占用标志
     occupy = False
     # 打开excel文件，获取文件属性信息
