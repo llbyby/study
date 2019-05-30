@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['getMAc.py'],
+a = Analysis(['getMAC.py'],
              pathex=['C:\\Users\\lvle\\PycharmProjects\\study'],
              binaries=[],
              datas=[],
@@ -23,7 +23,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='getMAc',
+          name='getMAC',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,

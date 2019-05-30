@@ -11,7 +11,7 @@ import time
 import uuid
 
 operator = '彭总'
-macaddress = '00:09:0f:fe:00:01'
+macaddress = '18:66:da:34:55:5f'
 touser = ''
 agentid = 1000004
 corpid = 'ww7d0cf0db2960ee82'
@@ -48,7 +48,7 @@ class WorkWx:
         self.respone = urllib.request.urlopen(urllib.request.Request(url=send_url, data=data)).read()
         x = json.loads(self.respone.decode())['errcode']
         if x == 0:
-            logging.debug('发送成功\n%s\n%s' % (touser, message))
+            #logging.debug('发送成功\n%s\n%s' % (touser, message))
             return 'Succesfully'
         else:
             logging.debug('微信接口返回失败码\n%s\n%s\n%s' % (x, touser, message))
@@ -73,7 +73,7 @@ if __name__ == '__main__':
         sys.exit(0)
     #密码校验
     password = input('请输入密码：')
-    if password != '2803prinT':
+    if password != '20010309xsP':
         print('密码错误！')
         input('按任意键退出...')
         sys.exit(0)
